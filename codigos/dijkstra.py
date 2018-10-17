@@ -1,5 +1,5 @@
 #dijkstra
-from heapq impor heappop,heappush
+from heapq import heappop,heappush
 
 INF = float('inf')
 
@@ -13,7 +13,7 @@ def dijksra(G,s):
 	visited = [False for _ in G]
 	#parejas distancia vertice cuando es monton, cuando es lista es vertice dist
 	heap = [(0,s)]
-	whie len(heap)!= 0:
+	while len(heap)!= 0:
 		d,u = heappop(heap)
 		if visited[u]==False:
 			for v,dv in G[u]:
@@ -24,3 +24,13 @@ def dijksra(G,s):
 					pre[v] = u
 			visited[u] = True 
 	return ans
+
+def main():
+    lenv, lene = map(int, stdin.readline().split())
+    G = [ list() for _ in range(lenv) ]
+    for _ in range(lene):
+        u, v, d = map(int, stdin.readline().split())
+        G[u].append((v, d))
+        G[v].append((u, d))
+    print(dijkstra(G, 0))
+
